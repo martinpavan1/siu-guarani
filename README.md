@@ -1,1 +1,3 @@
 SIU-Guaraní is an Argentinian platform that allows students to enroll in subjects, degree programs, and a wide variety of academic activities. It is part of the SIU (Sistema de Información Universitaria) suite, which provides tools for managing academic and administrative processes within public universities in Argentina. SIU-Guaraní is widely used for handling student records, tracking academic progress, managing exams, and facilitating communication between students and university staff.
+
+This project is a personal implementation of SIU-Guaraní, developed as my final project to pass the Programming 4 subject.
