@@ -19,6 +19,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST,"/h2-console/**").permitAll() // Permite acceso a h2-console sin autenticación
                 .requestMatchers("/h2-console/login.do").permitAll() 
                 .anyRequest().permitAll() // Permite cualquier request sin autenticación
+            )
+            .formLogin(form -> form.disable()
             );
         return http.build();
     }

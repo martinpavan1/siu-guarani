@@ -2,6 +2,7 @@ package com.guarani.siuguarani.models;
 
 import java.sql.Date;
 
+import com.guarani.siuguarani.dtos.DTOAlumnoResponse;
 import com.guarani.siuguarani.enums.CarreraEnum;
 
 import jakarta.annotation.Generated;
@@ -13,10 +14,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "alumnos")
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Alumno {
     @Id
@@ -25,6 +28,9 @@ public class Alumno {
 
     @Column(name = "student_id", nullable = false, unique = true)
     private Long studentID;
+
+    @Column(nullable = false)
+    private String password;
 
     @Column(nullable = false)
     private String nombre;
@@ -39,6 +45,17 @@ public class Alumno {
     private CarreraEnum carrera;
     
     private Date fechaNacimiento;
+
+
+    public DTOAlumnoResponse toDTO() {
+        return new DTOAlumnoResponse(
+            this.nombre,
+            this.apellido,
+            this.email,
+            this.carrera,
+            this.fechaNacimiento
+        );
+    }
 
     
 }
