@@ -1,4 +1,4 @@
-package com.guarani.siuguarani.Controllers;
+package com.guarani.siuguarani.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,4 +11,9 @@ public class holaController {
     public String hola() {
         return "Hola desde el controlador";
     }
+    @GetMapping("/adios")
+    public String adios() {
+        return "Adiós desde el controlador";
+    }   
+    
 }
