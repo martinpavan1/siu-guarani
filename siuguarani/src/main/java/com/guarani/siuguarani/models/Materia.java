@@ -22,13 +22,14 @@ import lombok.NoArgsConstructor;
 public class Materia {
 
     @Id
-    @Generated("jakarta.persistence.GenerationType.IDENTITY")
+    @Generated("jakarta.persistence.GenerationType.AUTO")
     private Long id;
 
     @Column(name = "codigo", nullable = false, unique = true)
     private String codigo;
 
     @Column(name = "nombre", nullable = false)
+    @Enumerated(EnumType.STRING)
     private MateriasEnum nombre;
 
     private String descripcion;

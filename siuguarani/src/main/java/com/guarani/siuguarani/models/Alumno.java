@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Alumno {
     @Id
-    @Generated("jakarta.persistence.GenerationType.IDENTITY")
+    @Generated("jakarta.persistence.GenerationType.AUTO")
     private Long id;
 
     @Column(name = "student_id", nullable = false, unique = true)

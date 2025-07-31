@@ -11,4 +11,10 @@ public class MateriaController {
         return "todo el biribiri de materias";
     }
 
+    @GetMapping("/materias/inscripcion")
+    public String inscribirMateria() {
+        return "inscripcion a materia";
+    }
+    
+
 }
