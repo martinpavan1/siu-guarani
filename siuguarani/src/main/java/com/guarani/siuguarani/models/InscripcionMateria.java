@@ -1,13 +1,14 @@
 package com.guarani.siuguarani.models;
 
 
-import com.guarani.siuguarani.dtos.DTOMateria;
+import com.guarani.siuguarani.dtos.DTOInscripcionMateria;
 import com.guarani.siuguarani.enums.EstadoEnum;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -24,14 +25,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InscripcionMateria {
     @Id
-    @Generated("jakarta.persistence.GenerationType.AUTO")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "alumno_id", nullable = false)
     private Alumno alumno;
 
-    private double nota;
+    private Integer nota;
 
     @ManyToOne
     @JoinColumn(name = "materia_id", nullable = false)
@@ -41,8 +42,8 @@ public class InscripcionMateria {
     private EstadoEnum estado;
 
 
-    public DTOMateria toDTO() {
-        return new DTOMateria(
+    public DTOInscripcionMateria toDTO() {
+        return new DTOInscripcionMateria(
             this.nota,
             this.materia,
             this.estado

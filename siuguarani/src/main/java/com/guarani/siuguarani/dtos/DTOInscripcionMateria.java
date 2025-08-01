@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DTOMateria {
-    private double nota;
+public class DTOInscripcionMateria {
+    private Integer nota;
     private Materia materia;
     private EstadoEnum estado;
 

@@ -1,13 +1,16 @@
 package com.guarani.siuguarani.models;
 
+
 import com.guarani.siuguarani.enums.CarreraEnum;
 import com.guarani.siuguarani.enums.MateriasEnum;
 
-import jakarta.annotation.Generated;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Materia {
 
     @Id
-    @Generated("jakarta.persistence.GenerationType.AUTO")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "codigo", nullable = false, unique = true)

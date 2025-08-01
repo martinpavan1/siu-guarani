@@ -5,11 +5,12 @@ import java.sql.Date;
 import com.guarani.siuguarani.dtos.DTOAlumnoResponse;
 import com.guarani.siuguarani.enums.CarreraEnum;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Alumno {
     @Id
-    @Generated("jakarta.persistence.GenerationType.AUTO")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "student_id", nullable = false, unique = true)
