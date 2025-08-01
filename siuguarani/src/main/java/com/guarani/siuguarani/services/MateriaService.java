@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.guarani.siuguarani.dtos.DTOInscripcionMateria;
 import com.guarani.siuguarani.enums.EstadoEnum;
 import com.guarani.siuguarani.models.Alumno;
+import com.guarani.siuguarani.models.Correlativa;
 import com.guarani.siuguarani.repositories.AlumnoRepository;
+import com.guarani.siuguarani.repositories.CorrelativaRepository;
 import com.guarani.siuguarani.repositories.InscripcionMateriaRepository;
 import com.guarani.siuguarani.repositories.MateriaRepository;
 import com.guarani.siuguarani.models.InscripcionMateria;
@@ -25,6 +27,8 @@ public class MateriaService {
     private AlumnoRepository alumnoRepository;
     @Autowired
     private MateriaRepository materiaRepository;
+    @Autowired
+    private CorrelativaRepository correlativaRepository;
 
     public List<DTOInscripcionMateria> listarMateriasPorAlumno(Long studentID) {
         Alumno alumno = alumnoRepository.findByStudentID(studentID); 
@@ -41,6 +45,15 @@ public class MateriaService {
         InscripcionMateria inscripcion = new InscripcionMateria();
         Alumno alumno = alumnoRepository.findByStudentID(studentID);
         Materia materia = materiaRepository.findById(materiaID).get(); // .get por el Optional
+
+        if(verificarCorrelativa(alumno, materia)){
+            return null; // ver como implementar el error
+        }
+        
+        Optional<InscripcionMateria> existente = inscripcionMateriaRepository.findByAlumnoAndMateria(alumno, materia);
+        if(existente.isPresent()){
+            return null; // ver como implementar el error
+        }
         
         inscripcion.setAlumno(alumno);
         inscripcion.setNota(0);
@@ -50,5 +63,19 @@ public class MateriaService {
         return inscripcionMateriaRepository.save(inscripcion).toDTO();
 
         
+    }
+
+    private boolean verificarCorrelativa(Alumno alumno, Materia materia){
+        List<Correlativa> correlativas = correlativaRepository.findByMateria(materia);
+
+        for(Correlativa c : correlativas){
+            Materia materiaCorrelativa = c.getCorrelativa();
+
+            Optional<InscripcionMateria> inscripto = inscripcionMateriaRepository.findByAlumnoAndMateria(alumno, materiaCorrelativa);
+            if( inscripto.isEmpty() || inscripto.get().getEstado() != EstadoEnum.APROBADO){
+                return true;
+            }
+        }
+        return false;
     }
 }
