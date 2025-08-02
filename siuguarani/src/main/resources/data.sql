@@ -144,3 +144,8 @@ INSERT INTO correlativas (materia_id, correlativa_id) VALUES (30, 25);   -- Semi
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 26);   -- Seminario II ← Ingeniería de Software II
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 28);   -- Seminario II ← Programación Profesional
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 25);   -- Seminario II ← Taller de Programación IV
+
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,16);
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,17);
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,18);
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,19);
