@@ -4,7 +4,11 @@ import { Inicioalumno } from './inicioalumno/inicioalumno';
 
 export const routes: Routes = [
 
-    {path: "acceso", component:Formlogin}, // ruta al Formlogin
-    {path: "inicio_alumno", component:Inicioalumno}
+    {path: "acceso", component:Formlogin},
+    {path: "inicio_alumno", component:Inicioalumno,
+        children : [
+            {path:"main"}
+        ]
+    }
 
 ];
