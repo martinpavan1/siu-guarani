@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DTOAlumnoResponse {
     
+    private Long studentID;
     private String nombre;
     private String apellido;
     private String email;
@@ -23,6 +24,7 @@ public class DTOAlumnoResponse {
     
     public Alumno toEntity(){
         Alumno alumno = new Alumno();
+        alumno.setStudentID(this.studentID);
         alumno.setNombre(this.nombre);
         alumno.setApellido(this.apellido);
         alumno.setEmail(this.email);

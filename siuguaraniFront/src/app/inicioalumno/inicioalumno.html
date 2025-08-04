@@ -1,8 +1,22 @@
-<app-header/>
-
 <main>
-<h1>TALLER DE PROGRAMACION IV</h1>
-</main>
+  @if (emptyalumno) {
+  <h2 class="text-center mb-4">📘 Taller de Programación IV</h2>
 
-  
-<app-footer/>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Nombre:</strong> {{ alumno?.nombre }} {{ alumno?.apellido }}
+    </li>
+    <li class="list-group-item">
+      <strong>Carrera:</strong> {{ alumno?.carrera }}
+    </li>
+    <li class="list-group-item"><strong>Email:</strong> {{ alumno?.email }}</li>
+    <li class="list-group-item">
+      <strong>Fecha de nacimiento:</strong> {{ alumno?.fechaNacimiento }}
+    </li>
+  </ul>
+  } @else {
+  <div class="alert alert-warning mt-4 text-center">
+    No se encontro informacion del alumno.
+  </div>
+  }
+</main>

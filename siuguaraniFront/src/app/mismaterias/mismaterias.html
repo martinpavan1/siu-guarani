@@ -1,0 +1,28 @@
+
+<table id="table-games" class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Actividad</th>
+            <th scope="col">Año</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let inscripciones of listaFinal">
+                    <td>{{inscripciones.materia.descripcion}}</td>
+                    <td>{{inscripciones.materia.anio}}</td>
+                    <td>@if(inscripciones.nota > 0){
+                        {{inscripciones.nota}} 
+                        }</td>
+                    <td>{{inscripciones.estado}}</td>
+                    <td>
+                        @if (inscripciones.estado != estado.APROBADO && inscripciones.estado != estado.EN_CURSO ) {
+                            <button class="btn btn-primary btnDelete mx-2 " (click)="inscribirse(inscripciones.materia.id)">Inscribirse</button>
+                        }
+                        
+                    </td>
+                </tr>
+        </tbody>
+    </table>

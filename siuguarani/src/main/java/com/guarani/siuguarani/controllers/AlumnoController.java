@@ -1,6 +1,7 @@
 package com.guarani.siuguarani.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,17 +26,12 @@ public class AlumnoController {
         return alumnoService.getAlumnoData(studentID);
     }
 
-    @GetMapping("/informes")
-    public String informes() {
-        return "Anda el endpoint de informes";
-    }
-
-    @GetMapping("/informes/alumno_regular")
-    public String alumnoRegular(@RequestParam Long studentID) {
+    @GetMapping("/alumno_regular")
+    public ResponseEntity<String> alumnoRegular(@RequestParam Long studentID) {
         return alumnoService.alumnoRegular(studentID);
     }
 
-    @GetMapping("/informes/avance_carrera")
+    @GetMapping("/avance_carrera")
     public String avanceCarrera(@RequestParam Long studentID) {
         return "Anda el endpoint de informes avance carrera";
     }

@@ -50,6 +50,7 @@ public class Alumno {
 
     public DTOAlumnoResponse toDTO() {
         return new DTOAlumnoResponse(
+            this.studentID,
             this.nombre,
             this.apellido,
             this.email,

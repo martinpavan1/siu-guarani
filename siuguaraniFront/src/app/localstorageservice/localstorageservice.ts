@@ -22,7 +22,7 @@ export class Localstorageservice {
         return resp
 
       }else{ 
-        console.log("No se guardo en el local storage")
+        console.log("No hay info en el localstorage")
         return null
       }
   }

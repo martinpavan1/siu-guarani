@@ -1,6 +1,7 @@
 package com.guarani.siuguarani.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.guarani.siuguarani.dtos.DTOAlumnoResponse;
@@ -18,13 +19,13 @@ public class AlumnoService {
         return alumno.toDTO();
     }
 
-    public String alumnoRegular(Long studentID) {
+    public ResponseEntity<String> alumnoRegular(Long studentID) {
         DTOAlumnoResponse alumnoData = getAlumnoData(studentID);
 
-        return "El alumno " + alumnoData.getNombre() + " " + alumnoData.getApellido() +
+        return ResponseEntity.ok("El alumno " + alumnoData.getNombre() + " " + alumnoData.getApellido() +
        ", nacido el " + alumnoData.getFechaNacimiento() +
        ", cursando la carrera de " + alumnoData.getCarrera() +
-       ", con email " + alumnoData.getEmail() + ", es alumno regular.";
+       ", con email " + alumnoData.getEmail() + ", es alumno regular.");
     }
 
     public String avanceCarrera(Long studentID) {

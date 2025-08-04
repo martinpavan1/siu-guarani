@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.guarani.siuguarani.dtos.DTOInscripcionMateria;
@@ -30,29 +32,35 @@ public class MateriaService {
     @Autowired
     private CorrelativaRepository correlativaRepository;
 
-    public List<DTOInscripcionMateria> listarMateriasPorAlumno(Long studentID) {
+    public ResponseEntity<List<DTOInscripcionMateria>> listarMateriasPorAlumno(Long studentID) {
         Alumno alumno = alumnoRepository.findByStudentID(studentID); 
 
         List <InscripcionMateria> materias = inscripcionMateriaRepository.findByAlumno(alumno);
 
-        return materias.stream()
+        return ResponseEntity.ok(materias.stream()
             .map(inscripcion -> new DTOInscripcionMateria(inscripcion.getNota(), inscripcion.getMateria(), inscripcion.getEstado()))
-            .collect(Collectors.toList());
-    }
+            .collect(Collectors.toList()));
 
-    public DTOInscripcionMateria inscribirMateria(Long studentID, Long materiaID){
+        
+    }
+    public ResponseEntity<List<Materia>> listarMaterias(){
+        List <Materia> materias = materiaRepository.findAll();
+        return ResponseEntity.ok(materias);
+    }   
+
+    public ResponseEntity<DTOInscripcionMateria> inscribirMateria(Long studentID, Long materiaID){
         
         InscripcionMateria inscripcion = new InscripcionMateria();
         Alumno alumno = alumnoRepository.findByStudentID(studentID);
         Materia materia = materiaRepository.findById(materiaID).get(); // .get por el Optional
 
         if(verificarCorrelativa(alumno, materia)){
-            return null; // ver como implementar el error
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // example para gestionar errores
         }
         
         Optional<InscripcionMateria> existente = inscripcionMateriaRepository.findByAlumnoAndMateria(alumno, materia);
         if(existente.isPresent()){
-            return null; // ver como implementar el error
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // example para gestionar errores
         }
         
         inscripcion.setAlumno(alumno);
@@ -60,7 +68,7 @@ public class MateriaService {
         inscripcion.setMateria(materia);
         inscripcion.setEstado(EstadoEnum.EN_CURSO);
 
-        return inscripcionMateriaRepository.save(inscripcion).toDTO();
+        return ResponseEntity.ok(inscripcionMateriaRepository.save(inscripcion).toDTO());
 
         
     }

@@ -1,6 +1,6 @@
 
 export interface AlumnoModel{
-
+    studentID : number
     apellido : string
     carrera : string
     email : string

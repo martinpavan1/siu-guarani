@@ -1,7 +1,8 @@
 INSERT INTO alumnos (student_id, nombre, apellido, email, password, fecha_nacimiento, carrera)
 VALUES (11, 'Juan', 'Perez', 'juan.perez1@guarani.edu', 'hola', '2001-01-15', 'AUS'),
 (12, 'Ana', 'Gomez', 'ana.gomez2@guarani.edu', 'hola', '2000-02-20', 'AUS'),
-(43767911, 'Martin Oscar', 'Pavan', 'pavanmartinoscar@gmail.com', 'hola', '2002-05-03', 'AUS');
+(43767911, 'Martin Oscar', 'Pavan', 'pavanmartinoscar@gmail.com', 'hola', '2002-05-03', 'AUS'),
+(13, 'Lucia', 'Gutierrez', 'luciguti@guarani.edu', 'hola', '2004-11-25', 'AUS');
         
 
 
@@ -111,6 +112,7 @@ INSERT INTO correlativas (materia_id, correlativa_id) VALUES (13, 7);    -- Base
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (13, 9);    -- Bases de Datos ← Taller de Programación II
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (14, 6);    -- Probabilidad y Estadística ← Análisis Matemático II
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (15, 8);    -- Arquitectura de las Computadoras II ← Arquitectura de las Computadoras I
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (8, 2);
 
 -- 2º AÑO - Segundo Cuatrimestre
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (16, 15);   -- Sistemas Operativos ← Arquitectura de las Computadoras II
@@ -144,7 +146,7 @@ INSERT INTO correlativas (materia_id, correlativa_id) VALUES (30, 25);   -- Semi
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 26);   -- Seminario II ← Ingeniería de Software II
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 28);   -- Seminario II ← Programación Profesional
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (29, 25);   -- Seminario II ← Taller de Programación IV
-
+INSERT INTO correlativas (materia_id, correlativa_id) VALUES (28, 24);
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,16);
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,17);
 INSERT INTO correlativas (materia_id, correlativa_id) VALUES (20,18);
