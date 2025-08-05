@@ -1,0 +1,58 @@
+<form
+    class="d-flex justify-content-center flex-column"
+      (ngSubmit)="actualizarAlumno()"
+      [formGroup]="perfilForm">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nombre"
+      formControlName="nombre"
+      name="nombre"
+      placeholder="Ingrese su nombre"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label>
+    <input
+      type="text"
+      class="form-control"
+      id="apellido"
+
+      formControlName="apellido"
+      name="apellido"
+      placeholder="Ingrese su apellido"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      name="email"
+      placeholder="ejemplo@correo.com"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+    <input
+      type="date"
+      class="form-control"
+      id="fechaNacimiento"
+      formControlName="fechaNacimiento"
+      name="fechaNacimiento"
+      required
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

@@ -1,7 +1,8 @@
 package com.guarani.siuguarani.services;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.guarani.siuguarani.dtos.DTOAlumnoResponse;
@@ -18,19 +19,18 @@ public class AlumnoService {
         Alumno alumno = alumnoRepository.findByStudentID(studentID);
         return alumno.toDTO();
     }
+    public DTOAlumnoResponse actualizarAlumnoData(Long studentID, String nombre, String apellido, 
+                                                    String email, Date fechaNacimiento){
+                            
+        Alumno alumno = alumnoRepository.findByStudentID(studentID);
+        alumno.setNombre(nombre);
+        alumno.setApellido(apellido);
+        alumno.setEmail(email);
+        alumno.setFechaNacimiento(fechaNacimiento);
 
-    public ResponseEntity<String> alumnoRegular(Long studentID) {
-        DTOAlumnoResponse alumnoData = getAlumnoData(studentID);
+        alumnoRepository.save(alumno);
 
-        return ResponseEntity.ok("El alumno " + alumnoData.getNombre() + " " + alumnoData.getApellido() +
-       ", nacido el " + alumnoData.getFechaNacimiento() +
-       ", cursando la carrera de " + alumnoData.getCarrera() +
-       ", con email " + alumnoData.getEmail() + ", es alumno regular.");
-    }
-
-    public String avanceCarrera(Long studentID) {
-        // Implementar lógica para el informe de avance de carrera
-        return "Anda el endpoint de informes avance carrera";
+        return alumno.toDTO();
     }
     
 }

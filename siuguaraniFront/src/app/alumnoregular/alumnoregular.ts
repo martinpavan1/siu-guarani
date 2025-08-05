@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Localstorageservice } from '../localstorageservice/localstorageservice';
+
 
 @Component({
   selector: 'app-alumnoregular',
@@ -7,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './alumnoregular.css'
 })
 export class Alumnoregular {
+  constructor(private lsservice: Localstorageservice){}
 
-}
+  
+  }
+

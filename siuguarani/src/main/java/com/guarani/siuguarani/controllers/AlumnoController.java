@@ -1,8 +1,12 @@
 package com.guarani.siuguarani.controllers;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,14 +30,13 @@ public class AlumnoController {
         return alumnoService.getAlumnoData(studentID);
     }
 
-    @GetMapping("/alumno_regular")
-    public ResponseEntity<String> alumnoRegular(@RequestParam Long studentID) {
-        return alumnoService.alumnoRegular(studentID);
-    }
+    @PostMapping("/actualizar/{studentID}/{nombre}/{apellido}/{email}/{fechaNacimiento}")
+    public ResponseEntity<DTOAlumnoResponse> actualizarAlumno(@PathVariable Long studentID, @PathVariable String nombre,
+                                                @PathVariable String apellido, @PathVariable String email,
+                                                @PathVariable Date fechaNacimiento){
 
-    @GetMapping("/avance_carrera")
-    public String avanceCarrera(@RequestParam Long studentID) {
-        return "Anda el endpoint de informes avance carrera";
+        return ResponseEntity.ok(alumnoService.actualizarAlumnoData(studentID, nombre, apellido, email, fechaNacimiento));
+        
     }
     
 }

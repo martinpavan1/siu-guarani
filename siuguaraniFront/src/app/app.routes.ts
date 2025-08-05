@@ -5,6 +5,7 @@ import { Layout } from './layout/layout';
 import { Mismaterias } from './mismaterias/mismaterias';
 import { Alumnoregular } from './alumnoregular/alumnoregular';
 import { Avancecarrera } from './avancecarrera/avancecarrera';
+import { Perfil } from './perfil/perfil';
 
 export const routes: Routes = [
 
@@ -15,6 +16,7 @@ export const routes: Routes = [
             {path: "mis_materias", component:Mismaterias},
             {path: "alumnoregular", component:Alumnoregular},
             {path: "avance_carrera", component:Avancecarrera},
+            {path: "perfil", component:Perfil}
         ]
     },
 

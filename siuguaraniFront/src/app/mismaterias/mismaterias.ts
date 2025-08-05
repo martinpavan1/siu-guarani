@@ -47,7 +47,7 @@ export class Mismaterias {
         
       })
     }else{
-      console.error("Error al obtener materias de alumno.")
+      console.error("Error al obtener el studentID).")
     }
     
   }
