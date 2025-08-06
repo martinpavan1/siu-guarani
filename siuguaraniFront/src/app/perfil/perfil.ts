@@ -22,21 +22,26 @@ export class Perfil {
     // console.log(this.perfilForm.value.email)
     // console.log(this.perfilForm.value.fechaNacimiento)
      const studentID = this.lsservice.getLocalStorage()?.studentID
-     if(studentID){
+     if(studentID && this.perfilForm.valid){
 
        this.perfilservice.actualizar(studentID, this.perfilForm.value.nombre, this.perfilForm.value.apellido,
                                      this.perfilForm.value.email, this.perfilForm.value.fechaNacimiento).subscribe({
                                        next: resp =>{
                                            this.lsservice.saveLocalStorage(resp)
                                            console.log("Alumno actualizado correctamente")
+                                           alert("Alumno actualizado correctamente")
                                        },
                                        error: err =>{
-                                         console.error("Error al actualizar el alumno")
+                                         console.error("Error al actualizar el alumno: ", err)
                                        }
                                      })
 
      } else{
-       console.error("Error al obetener el studentID")
+        if(!studentID){
+          alert("Error al obtener el studentID")
+        }else{
+            alert("Error en el formulario") 
+        }
      }
 
  }

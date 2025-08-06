@@ -2,15 +2,17 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { interceptor } from './interceptorservice/interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(
-      // withInterceptors([authInterceptorFn])
-    ),
+     provideHttpClient(
+       withInterceptors([interceptor])
+     ),
+   // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ]
 };

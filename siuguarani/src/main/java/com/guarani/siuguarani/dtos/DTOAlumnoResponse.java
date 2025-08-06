@@ -20,6 +20,7 @@ public class DTOAlumnoResponse {
     private String email;
     private CarreraEnum carrera;
     private Date fechaNacimiento;
+    private String token;
 
     
     public Alumno toEntity(){

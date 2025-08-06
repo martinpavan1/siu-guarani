@@ -27,10 +27,14 @@ public class AlumnoService {
         alumno.setApellido(apellido);
         alumno.setEmail(email);
         alumno.setFechaNacimiento(fechaNacimiento);
-
-        alumnoRepository.save(alumno);
-
-        return alumno.toDTO();
+        
+        try {
+            return alumnoRepository.save(alumno).toDTO();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+        //return alumno.toDTO();
     }
     
 }

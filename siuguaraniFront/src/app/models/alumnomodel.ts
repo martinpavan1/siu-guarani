@@ -6,4 +6,5 @@ export interface AlumnoModel{
     email : string
     fechaNacimiento : Date
     nombre : string
+    token : string
 }

@@ -10,7 +10,17 @@ export class Localstorageservice {
   constructor(authservice : Authservice){}
 
   saveLocalStorage(alumno : AlumnoModel):void{
-      localStorage.clear()
+    if(alumno.token == null){
+      const {token} = {...this.getLocalStorage()} // {token} desestructuracion  // {...} copia en memoria, no puntero
+      if(token){
+        alumno.token = token
+      }else{  
+        console.log("Error al obtener el token")
+      }
+
+    }
+      
+      //localStorage.clear()
       localStorage.setItem('alumno', JSON.stringify(alumno))
   }
 
