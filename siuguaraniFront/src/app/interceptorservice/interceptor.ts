@@ -40,3 +40,5 @@ export const interceptor: HttpInterceptorFn = (req, next) => {
   
   return next(req);
 };
+// usamos asi el interceptor por cambio de version de angular, ahora espera unma funcion 
+// de tipo httpinterceptorfn no una clase

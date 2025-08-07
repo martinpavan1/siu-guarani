@@ -55,12 +55,12 @@ public class MateriaService {
         Materia materia = materiaRepository.findById(materiaID).get(); // .get por el Optional
 
         if(verificarCorrelativa(alumno, materia)){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // example para gestionar errores
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // gestiona errores
         }
         
         Optional<InscripcionMateria> existente = inscripcionMateriaRepository.findByAlumnoAndMateria(alumno, materia);
         if(existente.isPresent()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // example para gestionar errores
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); //  gestiona errores
         }
         
         inscripcion.setAlumno(alumno);

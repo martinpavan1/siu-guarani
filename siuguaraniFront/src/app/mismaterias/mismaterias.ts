@@ -58,7 +58,7 @@ export class Mismaterias {
 
       let aux = {
         materia:materia,
-        nota: (exist) ? exist.nota : 0,       
+        nota: (exist) ? exist.nota : 0,         // si es undefined inicializa en 0
         estado: (exist) ? exist.estado : null   
       }
       this.listaFinal.push(aux);
@@ -75,7 +75,7 @@ export class Mismaterias {
           if(exist){
             exist.nota = resp.nota
             exist.estado = resp.estado
-          }
+          }                             
 
         },
         error : err =>
@@ -88,7 +88,8 @@ export class Mismaterias {
   ngOnInit():void{
     this.materias()
     this.materiasPorAlumno()
-    setTimeout(()=>this.mergeMaterias(), 750)
+    setTimeout(()=>this.mergeMaterias(), 750) 
+    // solucion a que se me inicializaba el merge en paralelo.. mejor hacerlo con una promesa
   }
   
 }

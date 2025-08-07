@@ -21,7 +21,7 @@ export class Avancecarrera {
         next: list=> {
             const aprobadas = list.filter(it => it.estado == Estado.APROBADO).length
             const totalMaterias = 30
-            this.avance = Math.round((aprobadas/totalMaterias)*100)
+            this.avance = Math.round((aprobadas/totalMaterias)*100) // mathround para que no aparezcan los decimales
 
         },
         error: err=>{

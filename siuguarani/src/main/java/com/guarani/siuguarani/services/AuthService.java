@@ -24,6 +24,6 @@ public class AuthService {
         if(alumno.isPresent()){
             return ResponseEntity.ok(alumno.get().toDTO());
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // example para gestionar errores
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); //  gestiona errores
     }
 }
